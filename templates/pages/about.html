@@ -170,69 +170,32 @@
                             <h2>Our Amazing Team</h2>
                         </div>
                     </div>
+
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mb60">
                         <div class="">
                             <p class="lead">Suctus felis non nibh maximus consectetuis sed nisl eniullase pellentesque es felis non nibh maximus nisl enintesque toestieege.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <!-- team-member -->
+            {% for team in teams %}        <!-- team-member -->
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 ">
                         <div class="team-block">
                             <div class="team-img">
-                                <a href="#" class="imghover"><img src="{% static 'images/team_member_1.jpg' %}" alt="" class="img-fluid"></a>
+                                <a href="#" class="imghover"><img src="{{ team.photo.url }}" alt="" class="img-fluid"></a>
                             </div>
                             <div class="team-content">
-                                <h4 class="team-title">Raymond Andersen</h4>
-                                <p class="team-meta">CEO &amp; Founder</p>
+                                <h4 class="team-title">{{team.first_name}} {{team.last_name}}</h4>
+                                <p class="team-meta">{{team.position}}</p>
                             </div>
                         </div>
                     </div>
-                    <!-- /.team-member -->
-                    <!-- team-member -->
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 ">
-                        <div class="team-block">
-                            <div class="team-img">
-                                <a href="#" class="imghover"><img src="{% static 'images/team_member_2.jpg' %}" alt="" class="img-fluid"></a>
-                            </div>
-                            <div class="team-content">
-                                <h4 class="team-title">Paul Nesmith</h4>
-                                <p class="team-meta">Travel Expert</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.team-member -->
-                    <!-- team-member -->
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 ">
-                        <div class="team-block">
-                            <div class="team-img">
-                                <a href="#" class="imghover"><img src="{% static 'images/team_member_3.jpg' %}" alt="" class="img-fluid"></a>
-                            </div>
-                            <div class="team-content">
-                                <h4 class="team-title">Karen Kapp</h4>
-                                <p class="team-meta">Accountant</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.team-member -->
-                    <!-- team-member -->
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 ">
-                        <div class="team-block">
-                            <div class="team-img">
-                                <a href="#" class="imghover"><img src="{% static 'images/team_member_4.jpg' %}" alt="" class="img-fluid"></a>
-                            </div>
-                            <div class="team-content">
-                                <h4 class="team-title">Kala Dewitt</h4>
-                                <p class="team-meta">Blog Writer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.team-member -->
+            {% endfor %}
                 </div>
             </div>
         </div>
-        <!-- /.team-section -->
+
         <!-- certificate-section -->
         <div class="space-medium bg-light">
             <div class="container">
