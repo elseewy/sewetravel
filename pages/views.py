@@ -1,9 +1,16 @@
 from django.shortcuts import render
 from .models import Team
+from tours.models import Tour
 # Create your views here.
 
 def home(request):
-    return render(request, 'pages/home.html')
+    tours = Tour.objects.all()
+    top_tours = Tour.objects.order_by("-created_date").filter(is_featured=True)
+    data = {
+        'tours': tours,
+        'top_tours': top_tours,
+    }
+    return render(request, 'pages/home.html', data)
 
 def about(request):
     teams = Team.objects.all()
