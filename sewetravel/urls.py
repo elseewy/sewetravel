@@ -22,5 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('pages.urls')),
     path('tours', include('tours.urls')),
+    path('tourlists', include('tourlists.urls')),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

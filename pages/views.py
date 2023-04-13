@@ -1,12 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Team
 from tours.models import Tour
+from tourlists.models import TourList
 # Create your views here.
 
 def home(request):
+
+    tourlists = TourList.objects.all()
     tours = Tour.objects.all()
-    top_tours = Tour.objects.order_by("-created_date").filter(is_featured=True)
+    top_tours = Tour.objects.order_by("-created_date").filter(is_featured=True)[:4]
     data = {
+        'tourlists': tourlists,
         'tours': tours,
         'top_tours': top_tours,
     }
