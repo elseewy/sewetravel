@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% load humanize %}
 {% load static %}
 
 
@@ -21,140 +21,70 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <!-- destination-section -->
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_1.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Singapore</a>
-                                <div class="overlay">
+                    {% for tour in tours %}
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <!-- destination-section -->
+                                <div class="destination-block">
+                                    <div class="desti-img">
+                                        <img src="{{ tour.tour_photo.url }}" alt="">
+                                        <a href="#" class="desti-title">{{tour.tour_title}}</a>
+                                        <div class="overlay">
+                                            </div>
+                                            <div class="text">
+                                                <h3 class="mb20 text-white">{{tour.tour_title}}</h3>
+                                               <ul class="angle list-none">
+                                                <li>{{tour.no_nights}} Nights / {{tour.no_days}} days</li>
+                                                <li>{{tour.no_stars}} Star hotel</li>
+                                                <li>{{tour.meal_one}} and {{tour.meal_two}}</li>
+                                               </ul>
+                                                <p class="price">${{tour.tour_price | intcomma }}</p>
+                                                <a href="{% url 'tour_detail' tour.id %}" class="btn-link">Go for {{tour.tour_title}} <i class="fa fa-angle-right"></i></a>
+                                            </div>
                                     </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Singapore</h3>
-                                       <ul class="angle list-none">
-                                        <li>4 Nights / 3 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$1599</p>
-                                        <a href="#" class="btn-link">Go for Singapore <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                        <!-- /.destination-section -->
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <!-- destination-section -->
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_2.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Thailand</a>
-                                <div class="overlay">
-                                    </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Thailand</h3>
-                                        <ul class="angle list-none">
-                                        <li>5 Nights / 4 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$2599</p>
-                                        <a href="#" class="btn-link">Go for Thailand <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                        <!-- /.destination-section -->
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <!-- destination-section -->
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_3.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Vietnam</a>
-                                <div class="overlay">
-                                    </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Vietnam</h3>
-                                         <ul class="angle list-none">
-                                        <li>6 Nights / 5 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$4599</p>
-                                        <a href="#" class="btn-link">Go for Vietnam <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                        <!-- /.destination-section -->
-                    </div>
-                    <!-- destination-section -->
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_4.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Melbourne</a>
-                                <div class="overlay">
-                                     </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Melbourne</h3>
-                                        <ul class="angle list-none">
-                                        <li>4 Nights / 3 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$2599</p>
-                                        <a href="#" class="btn-link">Go for Melbourne <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.destination-section -->
-                    <!-- destination-section -->
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_5.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Maldives</a>
-                                <div class="overlay">
-                                     </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Maldives</h3>
-                                         <ul class="angle list-none">
-                                        <li>8 Nights / 7 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$7000</p>
-                                        <a href="#" class="btn-link">Go for Maldives <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.destination-section -->
-                    <!-- destination-section -->
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                        <div class="destination-block">
-                            <div class="desti-img">
-                                <img src="{% static 'images/destination_6.jpg' %}" alt="">
-                                <a href="#" class="desti-title">Sri Lanka</a>
-                                <div class="overlay">
-                                    </div>
-                                    <div class="text">
-                                        <h3 class="mb20 text-white">Sri Lanka</h3>
-                                         <ul class="angle list-none">
-                                        <li>9 Nights / 8 days</li>
-                                        <li>3 Star hotel</li>
-                                        <li>Breakfast and Dinner</li>
-                                    </ul>
-                                    <p class="price">$8999</p>
-                                        <a href="#" class="btn-link">Go for Maldives <i class="fa fa-angle-right"></i></a></div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.destination-section -->
+                                </div>
+                           </div>
+                    {% endfor %}                    <!-- /.destination-section -->
                 </div>
+                <!-- Page navigation start -->
+
             </div>
+                <div class="pagination-box p-box-2 text-center">
+                    <nav aria-label="Page navigation example">
+                      {% if tours.has_other_pages %}
+                        <ul class="pagination">
+                          {% if tours.has_previous %}
+                              <li class="page-item">
+                                  <a class="page-link" href="?page={{tours.previous_page_number}}"><i class="fa fa-angle-left"></i></a>
+                              </li>
+                          {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                          {% endif %}
+
+                          {% for i in tours.paginator.page_range %}
+                            {% if tours.number == i %}
+                              <li class="page-item"><a class="page-link active" href="#">{{i}}</a></li>
+                            {% else %}
+                              <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if tours.has_next %}
+                              <li class="page-item">
+                                  <a class="page-link" href="?page={{cars.next_page_number}}"><i class="fa fa-angle-right"></i></a>
+                              </li>
+                          {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                          {% endif %}
+
+                        </ul>
+                      {% endif %}
+                    </nav>
+                </div>
+
         </div>
         <!-- /.destination-section -->
            <!-- newsletter-section -->

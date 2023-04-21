@@ -29,15 +29,6 @@ def gallery(request):
 def contact(request):
     return render(request, 'pages/contact.html')
 
-def tourlist(request):
-    return render(request, 'pages/tourlist.html')
-
-def toursinglelist(request):
-    return render(request, 'pages/tour-single-list.html')
-
-def toursingle(request):
-    return render(request, 'pages/toursingle.html')
-
 def blog(request):
     return render(request, 'pages/blog.html')
 

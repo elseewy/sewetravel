@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% block title %} | {{single_tour.tour_title}} {% endblock %}
 {% block content %}
 
+{% load humanize %}
 {% load static %}
 
 
@@ -13,8 +14,8 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="tour-caption">
-                            <h1 class="text-white tour-title">Singapore</h1>
-                            <p class="tour-caption-text text-white"><strong class="tour-rate">$1499</strong>( 3 nights | 4 days )</p>
+                            <h1 class="text-white tour-title">{{single_tour.tour_title}}</h1>
+                            <p class="tour-caption-text text-white"><strong class="tour-rate">$ {{single_tour.tour_price}}</strong>( 3 nights | 4 days )</p>
                             <a href="#" class="btn btn-primary mb10">Book Your Tour</a>
                             <a href="#" class="btn btn-white mb10">view map</a>
                         </div>
@@ -30,60 +31,76 @@
                     <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
                         <div class="highlights-section mb60">
                             <h3>Highlights</h3>
-                            <p>Nullam eget nisi urnaed mauris purus elementumat mollis acgravida utlacusulla ut velit id metus pellentesque elementumonec dignissim lorem estet egestas lectus pharetra auctorulla facilisi enean sed scelerisque urnaeu feugiat maurisuspendisse non sodales erat. </p>
+                            <p>{{single_tour.hightlight}}</p>
                             <ul class="angle list-none title-bold mb40">
-                                <li>Guided Singapore city tour</li>
-                                <li>Sentosa ice land with wings of times show</li>
-                                <li>Maritime musuem</li>
-                                <li>Sea Aquarium</li>
-                                <li>Full day universal Studio + meal coupon</li>
+                                {% if single_tour.highlight_1 %}
+                                    <li>{{single_tour.highlight_1}}</li>
+                                {% endif %}
+                                {% if single_tour.highlight_2 %}
+                                    <li>{{single_tour.highlight_2}}</li>
+                                {% endif %}
+                                {% if single_tour.highlight_3 %}
+                                    <li>{{single_tour.highlight_3}}</li>
+                                {% endif %}
+                                {% if single_tour.highlight_4 %}
+                                    <li>{{single_tour.highlight_4}}</li>
+                                {% endif %}
+                                {% if single_tour.highlight_5 %}
+                                    <li>{{single_tour.highlight_5}}</li>
+                                {% endif %}
                             </ul>
-                            <h4 class="mb30">Singapore Highlights</h4>
+                            <h4 class="mb30"> {{single_tour.tour_title}} Highlights</h4>
                             <div class="slide-thumb-gallery">
                                 <div class="owl-carousel" data-slider-id="1">
-                                    <div><img src="{% static 'images/slide_big_1.jpg' %}" alt="" class="img-fluid"></div>
-                                    <div><img src="{% static 'images/slide_big_2.jpg' %}.jpg" alt="" class="img-fluid"></div>
-                                    <div><img src="{% static 'images/slide_big_3.jpg' %}" alt="" class="img-fluid"></div>
-                                    <div><img src="{% static 'images/slide_big_4.jpg' %}" alt="" class="img-fluid"></div>
+
+                                        <div><img src="{{single_tour.tour_photo_1.url}}" alt="" class="img-fluid"></div>
+
+                                    {% if single_tour.tour_photo_3 %}
+                                        <div><img src="{{ single_tour.tour_photo_3.url }}" alt="" class="img-fluid"></div>
+                                    {% endif %}
+                                    {% if single_tour.tour_photo_5 %}
+                                        <div><img src="{{ single_tour.tour_photo_5.url }}" alt="" class="img-fluid"></div>
+                                    {% endif %}
+                                    {% if single_tour.tour_photo_7 %}
+                                        <div><img src="{{ single_tour.tour_photo_7.url }}" alt="" class="img-fluid"></div>
+                                    {% endif %}
                                 </div>
                                 <div class="owl-thumbs" data-slider-id="1">
-                                    <button class="owl-thumb-item"><img src="{% static 'images/slide_small_1.jpg' %}" alt="" class="img-fluid"></button>
-                                    <button class="owl-thumb-item"><img src="{% static 'images/slide_small_2.jpg' %}" alt="" class="img-fluid"></button>
-                                    <button class="owl-thumb-item"><img src="{% static 'images/slide_small_3.jpg' %}" alt="" class="img-fluid"></button>
-                                    <button class="owl-thumb-item"><img src="{% static 'images/slide_small_4.jpg' %}" alt="" class="img-fluid"></button>
+                                    {% if single_tour.tour_photo_2 %}
+                                        <button class="owl-thumb-item"><img src="{{ single_tour.tour_photo_2.url }}" alt="" class="img-fluid"></button>
+                                    {% endif %}
+                                    {% if single_tour.tour_photo_4 %}
+                                        <button class="owl-thumb-item"><img src="{{ single_tour.tour_photo_4.url }}" alt="" class="img-fluid"></button>
+                                    {% endif %}
+                                    {% if single_tour.tour_photo_6 %}
+                                        <button class="owl-thumb-item"><img src="{{ single_tour.tour_photo_6.url }}" alt="" class="img-fluid"></button>
+                                    {% endif %}
+                                    {% if single_tour.tour_photo_8 %}
+                                        <button class="owl-thumb-item"><img src="{{ single_tour.tour_photo_8.url }}" alt="" class="img-fluid"></button>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div class="journey-section mb60">
                             <h3 class="mb30">Journey</h3>
+
                             <div class="well-bg-block">
-                                <h4 class="journey-day-title">Day 1 : Arrive International Airport</h4>
+                                <h4 class="journey-day-title">Day 1 : {{ single_tour.day_1_title }}</h4>
                                 <ul class="angle list-none">
-                                    <li>Aliquam vitae dolor aliquet feugiat risus cibus convallis sem</li>
-                                    <li>Mauris facilisis magna purusvel efficiurex convallis sed</li>
-                                    <li>Suspendisse congue mimagna cinia lputate erat</li>
-                                    <li>Quisque vitae bibendum rosliquam lacus etelit lobortist </li>
-                                    <li>Vivamus sed ligula leo. Cras cour vitae lore</li>
+                                    {{ single_tour.day_1 | safe }}
+
                                 </ul>
                             </div>
                             <div class="well-bg-block">
-                                <h4 class="journey-day-title">Day 2 : Sentosa Iceland</h4>
+                                <h4 class="journey-day-title">Day 2 : {{ single_tour.day_2_title }}</h4>
                                 <ul class="angle list-none">
-                                    <li>Phasellus eget euismod nisinon cursus quamed vitae ipsum augue
-                                        <li>Vestibulum rutrum atnuquis pretiuamus sed felisat leo</li>
-                                        <li>Fusce in maximus risusat mollis arcutiam consmassa vulputate</li>
-                                        <li>Morbi laciniorci venenatis anteiulis consequaorbi sitame</li>
-                                        <li>Duis egestas turpis consectetur pulvinar eleifterdum et malesuada</li>
+                                   {{ single_tour.day_2 | safe }}
                                 </ul>
                             </div>
                             <div class="well-bg-block">
-                                <h4 class="journey-day-title">Day 3 : Sunway Lagoon</h4>
+                                <h4 class="journey-day-title">Day 3 : {{ single_tour.day_3_title }}</h4>
                                 <ul class="angle list-none">
-                                    <li>Fusce in maximus risusat mollis arcutiam consmassa vulputate</li>
-                                    <li>Vestibulum rutrum atnuquis pretiuamus sed felisat leo</li>
-                                    <li>Phasellus eget euismod nisinon cursus quamed vitae ipsum augue</li>
-                                    <li>Duis egestas turpis consecinar eleifterdum et malesuada</li>
-                                    <li>Morbi laciniorci venenatis anteiulis consequaorbi sitame</li>
+                                    {{ single_tour.day_3 | safe }}
                                 </ul>
                             </div>
                         </div>
@@ -92,20 +109,12 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <ul class="arrow list-none">
-                                        <li>Fusce in mais arcutiam consmassa vulputate</li>
-                                        <li>Vestibulum rutrutiuamus sed felisat leo</li>
-                                        <li>Eget euismod ns quamed vitae ipsum augue</li>
-                                        <li>Destas turpis consect malesuada</li>
-                                        <li>Laciniorci venenatis anteiulisrbi sitame</li>
+                                        {{ single_tour.tour_included | safe }}
                                     </ul>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <ul class="arrow list-none">
-                                        <li>Eget euismod ns quamed vitae ipsum augue</li>
-                                        <li>Vestibulum rutrutiuamus sed felisat leo</li>
-                                        <li>Fusce in mais arcutiam consmassa vulputate</li>
-                                        <li>Destas turpis consect malesuada</li>
-                                        <li>Laciniorci venenatis anteiulisrbi sitame</li>
+                                        {{ single_tour.tour_included_2 | safe }}
                                     </ul>
                                 </div>
                             </div>
@@ -189,11 +198,10 @@
                                         <div class="form-group">
                                             <label class="control-label sr-only" for="select"></label>
                                             <div class="select">
-                                                <select id="select" name="select" class="form-control">
-                                                    <option value="">Where you want to go</option>
-                                                    <option value="">Singapore</option>
-                                                    <option value="">Thailand</option>
-                                                    <option value="">Vietnam</option>
+                                                <select id="destination" name="tour-title" class="form-control">
+                                                    {% for tour in single_tour %}
+                                                        <option value="">{{tour.destination}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -210,15 +218,8 @@
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label class="control-label sr-only" for="select"></label>
-                                            <div class="select">
-                                                <select id="select" name="select" class="form-control">
-                                                    <option value="">Number of Peoples</option>
-                                                    <option value="">6</option>
-                                                    <option value="">10</option>
-                                                    <option value="">25</option>
-                                                </select>
-                                            </div>
+                                            <label class="control-label" for="country">Country</label>
+                                            <input id="no-people" type="text" placeholder="India" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
