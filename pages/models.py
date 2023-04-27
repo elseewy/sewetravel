@@ -11,3 +11,18 @@ class Team(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class Subscribers(models.Model):
+    email = models.EmailField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+
+class MailMessage(models.Model):
+    title = models.CharField(max_length=100, null=True)
+    message = models.TextField(null=True)
+
+    def __str__(self):
+        return self.title

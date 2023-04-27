@@ -1,0 +1,30 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+   <div class="newsletter-wrapper newsletter-overlay" style="background: url({% static 'images/newsletter_wrapper.jpg' %}) no-repeat;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-7 offset-md-5 col-md-6 col-sm-12 col-12">
+                    {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <div class="newsletter-block">
+                      <h1 class="newsletter-title">Join The Newsletter</h1>
+                        <p class="mb30">Subscribe the newsletter and get update for discounts on tours.</p>
+                        <form  method="POST" >
+                            {% csrf_token %}
+
+                            <div class="input-group add-on">
+                                {{ form|crispy }}
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary newsletter-btn" type="submit">subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
